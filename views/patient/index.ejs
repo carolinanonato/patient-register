@@ -42,7 +42,12 @@
                                             <th scope="col">#</th>
                                             <th scope="col">First Name</th>
                                             <th scope="col">Last Name</th>
+                                            <th scope="col">Date of Birth</th>
+                                            <th scope="col">Phone</th>
+                                            <th scope="col">Email</th>
+                                            <th width="200px">Doctor</th>
                                             <th width="200px">Action</th>
+
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -56,6 +61,21 @@
                                                 </td>
                                                 <td>
                                                     <%= data[i].lastname%>
+                                                </td>
+                                                <td>
+                                                    <%= data[i].dob%>
+                                                </td>
+                                                <td>
+                                                    <%= data[i].phone%>
+                                                </td>
+                                                <td>
+                                                    <%= data[i].email%>
+                                                </td>
+                                                <td>
+                                                    <%=data[i].doctor%>
+
+
+
                                                 </td>
                                                 <td>
                                                     <a class="btn btn-success edit"

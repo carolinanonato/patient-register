@@ -23,7 +23,12 @@ router.get('/add', function (req, res, next) {
     // render to add.ejs
     res.render('patient/add', {
         firstname: '',
-        lastname: ''
+        lastname: '',
+        dob: '',
+        phone: '',
+        email: '',
+        doctor: ''
+
     })
 })
 
@@ -31,6 +36,10 @@ router.post('/add', function (req, res, next) {
 
     let firstname = req.body.firstname;
     let lastname = req.body.lastname;
+    let dob = req.body.dob;
+    let phone = req.body.phone;
+    let email = req.body.email;
+    let doctor = req.body.doctor;
     let errors = false;
 
     if (firstname.length === 0 || lastname.length === 0) {
@@ -41,7 +50,11 @@ router.post('/add', function (req, res, next) {
         // render to add.ejs with flash message
         res.render('patient/add', {
             firstname: firstname,
-            lastname: lastname
+            lastname: lastname,
+            dob: dob,
+            phone: phone,
+            email: email,
+            doctor: doctor,
         })
     }
 
@@ -50,7 +63,11 @@ router.post('/add', function (req, res, next) {
 
         var form_data = {
             firstname: firstname,
-            lastname: lastname
+            lastname: lastname,
+            dob: dob,
+            phone: phone,
+            email: email,
+            doctor: doctor,
         }
 
         // insert query
@@ -62,7 +79,11 @@ router.post('/add', function (req, res, next) {
                 // render to add.ejs
                 res.render('patient/add', {
                     firstname: form_data.firstname,
-                    lastname: form_data.lastname
+                    lastname: form_data.lastname,
+                    dob: form_data.dob,
+                    phone: form_data.phone,
+                    email: form_data.email,
+                    doctor: form_data.doctor,
                 })
             } else {
                 req.flash('success', 'User successfully added');
@@ -92,7 +113,11 @@ router.get('/edit/(:id)', function (req, res, next) {
                 title: 'Edit User',
                 id: rows[0].id,
                 firstname: rows[0].firstname,
-                lastname: rows[0].lastname
+                lastname: rows[0].lastname,
+                dob: rows[0].dob,
+                phone: rows[0].phone,
+                email: rows[0].email,
+                doctor: rows[0].doctor,
             })
         }
     })
@@ -104,6 +129,10 @@ router.post('/update/:id', function (req, res, next) {
     let id = req.params.id;
     let firstname = req.body.firstname;
     let lastname = req.body.lastname;
+    let dob = req.body.dob;
+    let phone = req.body.phone;
+    let email = req.body.email;
+    let doctor = req.body.doctor;
     let errors = false;
 
     if (firstname.length === 0 || lastname.length === 0) {
@@ -115,7 +144,11 @@ router.post('/update/:id', function (req, res, next) {
         res.render('patient/edit', {
             id: req.params.id,
             firstname: firstname,
-            lastname: lastname
+            lastname: lastname,
+            dob: dob,
+            phone: phone,
+            email: email,
+            doctor: doctor,
         })
     }
 
@@ -124,7 +157,11 @@ router.post('/update/:id', function (req, res, next) {
 
         var form_data = {
             firstname: firstname,
-            lastname: lastname
+            lastname: lastname,
+            dob: dob,
+            phone: phone,
+            email: email,
+            doctor: doctor,
         }
         // update query
         dbConn.query('UPDATE user SET ? WHERE id = ' + id, form_data, function (err, result) {
@@ -136,7 +173,11 @@ router.post('/update/:id', function (req, res, next) {
                 res.render('patient/edit', {
                     id: req.params.id,
                     firstname: form_data.firstname,
-                    lastname: form_data.lastname
+                    lastname: form_data.lastname,
+                    dob: form_data.dob,
+                    phone: form_data.phone,
+                    email: form_data.email,
+                    doctor: form_data.doctor,
                 })
             } else {
                 req.flash('success', 'User successfully updated');
