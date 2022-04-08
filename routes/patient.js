@@ -27,7 +27,9 @@ router.get('/add', function (req, res, next) {
         dob: '',
         phone: '',
         email: '',
-        doctor: ''
+        doctor: '',
+        speciality: '',
+        lastappointment: '',
 
     })
 })
@@ -40,6 +42,9 @@ router.post('/add', function (req, res, next) {
     let phone = req.body.phone;
     let email = req.body.email;
     let doctor = req.body.doctor;
+    let speciality = req.body.speciality;
+    let lastappointment = req.body.lastappointment;
+
     let errors = false;
 
     if (firstname.length === 0 || lastname.length === 0) {
@@ -55,6 +60,8 @@ router.post('/add', function (req, res, next) {
             phone: phone,
             email: email,
             doctor: doctor,
+            speciality: speciality,
+            lastappointment: lastappointment,
         })
     }
 
@@ -68,6 +75,8 @@ router.post('/add', function (req, res, next) {
             phone: phone,
             email: email,
             doctor: doctor,
+            speciality: speciality,
+            lastappointment: lastappointment,
         }
 
         // insert query
@@ -84,6 +93,8 @@ router.post('/add', function (req, res, next) {
                     phone: form_data.phone,
                     email: form_data.email,
                     doctor: form_data.doctor,
+                    speciality: form_data.speciality,
+                    lastappointment: form_data.lastappointment,
                 })
             } else {
                 req.flash('success', 'User successfully added');
@@ -118,6 +129,8 @@ router.get('/edit/(:id)', function (req, res, next) {
                 phone: rows[0].phone,
                 email: rows[0].email,
                 doctor: rows[0].doctor,
+                speciality: rows[0].speciality,
+                lastappointment: rows[0].lastappointment,
             })
         }
     })
@@ -133,6 +146,8 @@ router.post('/update/:id', function (req, res, next) {
     let phone = req.body.phone;
     let email = req.body.email;
     let doctor = req.body.doctor;
+    let speciality = req.body.speciality;
+    let lastappointment = req.body.lastappointment;
     let errors = false;
 
     if (firstname.length === 0 || lastname.length === 0) {
@@ -149,6 +164,8 @@ router.post('/update/:id', function (req, res, next) {
             phone: phone,
             email: email,
             doctor: doctor,
+            speciality: speciality,
+            lastappointment: lastappointment,
         })
     }
 
@@ -162,12 +179,14 @@ router.post('/update/:id', function (req, res, next) {
             phone: phone,
             email: email,
             doctor: doctor,
+            speciality: speciality,
+            lastappointment: lastappointment,
         }
         // update query
         dbConn.query('UPDATE user SET ? WHERE id = ' + id, form_data, function (err, result) {
-            //if(err) throw err
+
             if (err) {
-                // set flash message
+
                 req.flash('error', err)
                 // render to edit.ejs
                 res.render('patient/edit', {
@@ -178,6 +197,8 @@ router.post('/update/:id', function (req, res, next) {
                     phone: form_data.phone,
                     email: form_data.email,
                     doctor: form_data.doctor,
+                    speciality: form_data.speciality,
+                    lastappointment: form_data.lastappointment,
                 })
             } else {
                 req.flash('success', 'User successfully updated');
@@ -193,14 +214,14 @@ router.get('/delete/(:id)', function (req, res, next) {
     let id = req.params.id;
 
     dbConn.query('DELETE FROM user WHERE id = ' + id, function (err, result) {
-        //if(err) throw err
+
         if (err) {
-            // set flash message
+
             req.flash('error', err)
 
             res.redirect('/patient')
         } else {
-            // set flash message
+
             req.flash('success', 'User successfully deleted! ID = ' + id)
 
             res.redirect('/patient')

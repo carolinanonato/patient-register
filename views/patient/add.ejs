@@ -38,8 +38,7 @@
                         </div>
                         <div class="form-group">
                             <label>Phone:</label>
-                            <input type="number" class="form-control" name="phone" value="<%= phone %>"
-                                autocomplete="off">
+                            <input type="tel" class="form-control" name="phone" value="<%= phone %>" autocomplete="off">
                         </div>
                         <div class="form-group">
                             <label>Email:</label>
@@ -55,6 +54,22 @@
                                 <option>Cletis Braylon</option>
                                 <option>Braiden Keeley</option>
                             </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Speciality</label>
+                            <select class="form-control" name="speciality" value="<%= speciality %>"
+                                autocomplete="off">>
+                                <option>Cardiologist</option>
+                                <option>Dermatologist</option>
+                                <option>Neurologist</option>
+                                <option>Oncologist</option>
+                                <option>Pediatrician</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Last Appointment:</label>
+                            <input type="date" class="form-control" name="lastappointment"
+                                value="<%= lastappointment %>" autocomplete="off">
                         </div>
                         <div class="form-group">
                             <input type="submit" class="btn btn-info" value="Add" />
