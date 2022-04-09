@@ -50,9 +50,9 @@ router.post('/add', function (req, res, next) {
     if (firstname.length === 0 || lastname.length === 0) {
         errors = true;
 
-        // set flash message
-        req.flash('error', "Please enter name and author");
-        // render to add.ejs with flash message
+
+        req.flash('error', "Please enter First and Last Name");
+
         res.render('patient/add', {
             firstname: firstname,
             lastname: lastname,
@@ -153,9 +153,9 @@ router.post('/update/:id', function (req, res, next) {
     if (firstname.length === 0 || lastname.length === 0) {
         errors = true;
 
-        // set flash message
-        req.flash('error', "Please enter name and lsatname");
-        // render to add.ejs with flash message
+
+        req.flash('error', "Please enter First and Last Name");
+
         res.render('patient/edit', {
             id: req.params.id,
             firstname: firstname,
@@ -169,7 +169,6 @@ router.post('/update/:id', function (req, res, next) {
         })
     }
 
-    // if no error
     if (!errors) {
 
         var form_data = {

@@ -6,11 +6,8 @@ var logger = require('morgan');
 
 var flash = require('express-flash');
 var session = require('express-session');
-var mysql = require('mysql');
-var connection = require('./lib/db');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 var patientRouter = require('./routes/patient');
 
 var app = express();
@@ -35,7 +32,7 @@ app.use(session({
 app.use(flash());
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+
 app.use('/patient', patientRouter);
 
 
