@@ -69,10 +69,12 @@
                                                     <%= data[i].lastname%>
                                                 </td>
                                                 <td>
-                                                    <%= data[i].dob%>
+
+                                                    <%= moment(data[i].dob).format( 'MM-DD-YYYY' ) %>
                                                 </td>
                                                 <td>
                                                     <%= data[i].phone%>
+
                                                 </td>
                                                 <td>
                                                     <%= data[i].email%>
@@ -86,7 +88,8 @@
 
                                                 </td>
                                                 <td>
-                                                    <%=data[i].lastappointment%>
+
+                                                    <%= moment(data[i].lastappointment).format( 'MM-DD-YYYY' ) %>
 
                                                 </td>
                                                 <td style="display: flex; ">

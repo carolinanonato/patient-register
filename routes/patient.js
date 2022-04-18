@@ -221,7 +221,7 @@ router.get('/delete/(:id)', function (req, res, next) {
             res.redirect('/patient')
         } else {
 
-            req.flash('success', 'User successfully deleted! ID = ' + id)
+            req.flash('success', 'Patient successfully deleted! ID = ' + id)
 
             res.redirect('/patient')
         }

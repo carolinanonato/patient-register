@@ -10,7 +10,15 @@ var session = require('express-session');
 var indexRouter = require('./routes/index');
 var patientRouter = require('./routes/patient');
 
+
 var app = express();
+
+const moment = require("moment");
+
+app.use((req, res, next) => {
+  res.locals.moment = moment;
+  next();
+});
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -51,3 +59,5 @@ app.use(function (err, req, res, next) {
 });
 
 module.exports = app;
+
+
